@@ -116,7 +116,7 @@ button {
 }
 
 .info {
-  width: 300px;
+  width: 500px;
   height: 500px;
   background-color: rgb(245, 245, 245);
   border-radius: 1rem;
@@ -139,5 +139,8 @@ button {
   .bars-container {
     margin-top: 0vh;
     width: 70vw;
+  }
+  .info{
+    width: 300px;
   }
 }
