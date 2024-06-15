@@ -169,7 +169,7 @@ class Algorithm extends Component {
     const bars = document.querySelectorAll(".bar");
     const currentElement = bars[i];
     const clone = currentElement.cloneNode(true);
-    clone.style.marginLeft = "2rem";
+    // clone.style.marginLeft = "2rem";
     clone.style.backgroundColor = "crimson";
     clone.id = `clonedElement`;
     clone.className = `bar`;
@@ -521,6 +521,8 @@ class Algorithm extends Component {
             onChange={(e) => this.setState({ delay: e.target.value })}
           />
           <p>Delay: {delay}ms</p>
+        </div>
+        <div>
           <input
             type="text"
             placeholder="Create your own array"

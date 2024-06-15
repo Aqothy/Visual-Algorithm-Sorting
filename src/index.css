@@ -138,9 +138,18 @@ button {
   }
   .bars-container {
     margin-top: 0vh;
-    width: 70vw;
+    width: 80vw;
+    gap: 0.2rem
   }
   .info{
     width: 300px;
+  }
+
+  .code-container{
+    font-size: 10px;
+  }
+
+  #clonedElement{
+    margin-left: 1rem;
   }
 }

@@ -53,8 +53,8 @@ export default function Code({ algorithm, stage }) {
             &emsp;set j = i - 1
           </div>
           <div className={`${stage === 2 ? "highlight" : ""}`}>
-            &emsp;while j is greater than or equal to 0 and element at position
-            j is greater than the copied element
+            &emsp;while j &gt;= to 0 and element at position j is greater than
+            the copied element
           </div>
           <div className={`${stage === 3 ? "highlight" : ""}`}>
             &emsp;&emsp;copy the element at position j to position j + 1
