@@ -54,10 +54,8 @@ export default function Code({ algorithm, stage }) {
           </div>
           <div className={`${stage === 2 ? "highlight" : ""}`}>
             &emsp;while j is greater than or equal to 0 and element at position
-            j is greater than the copied element
-          </div>
-          <div className={`${stage === 3 ? "highlight" : ""}`}>
-            &emsp;&emsp;move the element at position j to position j + 1
+            j is greater than the copied element <br />
+            &emsp;&emsp;copy the element at position j to position j + 1
             <br /> &emsp;&emsp;-1 from j
           </div>
           <div className={`${stage === 4 ? "highlight" : ""}`}>

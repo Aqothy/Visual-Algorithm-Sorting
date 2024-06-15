@@ -10,7 +10,7 @@ class Algorithm extends Component {
     this.state = {
       array: [],
       algorithm: "Bubble",
-      delay: 300,
+      delay: 1000,
       sorting: false,
       stage: null,
       modal: false,
@@ -130,30 +130,27 @@ class Algorithm extends Component {
     this.setState({ sorting: true });
     const { array, delay } = this.state;
     let len = array.length;
-
     for (let i = 1; i < len; i++) {
       let x = array[i];
       //copy the element to be inserted and add it to dom for user visuals
-      this.copyElement(i);
+      await this.copyElement(i);
       let j = i - 1;
       this.setState({ stage: 1 });
       await this.sleep(delay / 5);
       while (j >= 0 && x < array[j]) {
         //set stages and animate the comparison and copy heights
-        this.setState({ stage: 2 });
-        await this.sleep(delay / 5);
-        this.setState({ stage: 3 });
+        if (this.state.stage !== 2) {
+          this.setState({ stage: 2 });
+        }
         await this.animateSort(len, j, "compare", delay);
         await this.animateSort(j, j + 1, "copy", delay);
         array[j + 1] = array[j];
         j--;
       }
 
-      const newElement = document.querySelector(`#clonedElement-${i}`);
-
-      await this.sleep(delay / 5);
-      this.setState({ stage: 4 });
+      const newElement = document.getElementById(`clonedElement`);
       await this.animateSort(j + 1, array.length, "swap", delay);
+      this.setState({ stage: 4 });
 
       newElement.remove();
 
@@ -165,18 +162,19 @@ class Algorithm extends Component {
   }
 
   async copyElement(i) {
+    const delay = this.state.delay;
     const bars = document.querySelectorAll(".bar");
     const currentElement = bars[i];
     const clone = currentElement.cloneNode(true);
     clone.style.marginLeft = "2rem";
     clone.style.backgroundColor = "crimson";
-    clone.id = `clonedElement-${i}`;
+    clone.id = `clonedElement`;
     clone.className = `bar`;
     clone.innerText = `${
       parseInt(clone.style.height.replace("px", "")) / 50
     }\nc`;
-    bars[i].parentElement.appendChild(clone);
-    await this.sleep();
+    document.querySelector(".bars-container").appendChild(clone);
+    await this.sleep(delay / 5);
   }
 
   async merge(array, start, mid, end, delay = this.state.delay) {
