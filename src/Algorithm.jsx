@@ -10,7 +10,7 @@ class Algorithm extends Component {
     this.state = {
       array: [],
       algorithm: "Bubble",
-      delay: 1000,
+      delay: 300,
       sorting: false,
       stage: null,
       modal: false,
