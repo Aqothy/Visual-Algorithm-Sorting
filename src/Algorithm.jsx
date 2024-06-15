@@ -137,23 +137,26 @@ class Algorithm extends Component {
       let j = i - 1;
       this.setState({ stage: 1 });
       await this.sleep(delay / 5);
+      if (!(j >= 0 && x < array[j])) {
+        this.setState({ stage: 4 });
+        await this.sleep(delay / 5);
+      } else {
+        this.setState({ stage: 2 });
+        await this.sleep(delay / 5);
+      }
+      if (j >= 0 && x < array[j]) {
+        this.setState({ stage: 3 });
+      }
       while (j >= 0 && x < array[j]) {
         //set stages and animate the comparison and copy heights
-        if (this.state.stage !== 2) {
-          this.setState({ stage: 2 });
-        }
         await this.animateSort(len, j, "compare", delay);
         await this.animateSort(j, j + 1, "copy", delay);
         array[j + 1] = array[j];
         j--;
       }
-
       const newElement = document.getElementById(`clonedElement`);
       await this.animateSort(j + 1, array.length, "swap", delay);
-      this.setState({ stage: 4 });
-
       newElement.remove();
-
       array[j + 1] = x;
     }
 
@@ -531,7 +534,6 @@ class Algorithm extends Component {
               const customArray = this.state.customArray
                 .split(",")
                 .map((n) => parseInt(n));
-              console.log(customArray);
               if (customArray.some((n) => isNaN(n))) {
                 toast.error("Please separate numbers with one comma");
                 return;
