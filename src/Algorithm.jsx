@@ -569,7 +569,7 @@ class Algorithm extends Component {
             Sort
           </button>
           <img
-            src="/info.svg"
+            src="./public/info.svg"
             alt="info"
             style={{ height: "20px" }}
             onClick={() => this.setState({ modal: true })}
